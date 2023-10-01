@@ -1,0 +1,82 @@
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: justify;
+  }
+#skills_sub{
+    display: flex;
+    justify-content: space-evenly;
+}
+#programming_languages{
+    margin-top: 25;
+    margin-left: 80;
+    font-size: h3;
+    display: block;
+}
+#FrameWorks{
+    margin-top: 25;
+    margin-left: 80;
+    font-size: h3;
+    display: block;
+}
+#misc{
+
+    margin-top: 25;
+    margin-left: 80;
+    font-size: h3;
+    display: block;
+    
+}
+a:link{
+    color:white;
+    text-decoration: none;
+}
+a:hover{
+    color:rgb(190, 0, 0); ;
+}
+body{
+    padding-right: 100px;
+    padding-left: 100px;
+    
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+#underlay{
+    margin-right: 100;
+    font-size: 20px;
+    font-weight: 500 ;
+    display: block;
+}
+#about_me{
+    line-height: 1.5;
+}
+#main_text{
+    
+    text-align: justify;
+    font-size: 20;
+    font-weight: 500 ;
+    font-family: 'Cascadia Code', sans-serif;
+    display: block;
+    margin-left: 50;
+    margin-right: auto;
+    width: 90%;
+}
+#name{
+
+    margin-left: -5;
+    font-size: 60;
+    
+    font-family: 'Cascadia Code', sans-serif;
+    display: block;
+    width: 70%;
+    color: rgb(182, 0, 0);
+}
+hr {
+    height:1px;
+    border-width:0;
+    border-top: 2px dashed rgb(190, 0, 0);
+    
+    margin-left :40;
+    margin-right: 40;
+    /* background-color :rgb(190, 0, 0); */
+  } 
+
