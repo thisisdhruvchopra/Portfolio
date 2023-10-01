@@ -2,7 +2,44 @@ body, h1, h2, h3, h4, h5, h6 {
     font-family: 'Courier New', Courier, monospace;
     text-align: justify;
   }
+
+#gitlogo{
+
+    margin-right: 30px;
+
+
+}
+#leetcode{
+
+    margin-right: 30px;
+
+
+}
+#hackerrank{
+    margin-top: -17;
+
+    margin-right: 30px;
+
+
+}
+#linkedin{
+    margin-top: -7;
+    margin-right: 30px;
+}
+#info{
+    margin-top: 15px;
+    margin-right: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+#Header{
+    display: flex;
+    justify-content: space-evenly;
+}
 #skills_sub{
+    margin-left: -70;
     display: flex;
     justify-content: space-evenly;
 }
@@ -36,7 +73,6 @@ a:hover{
 body{
     padding-right: 100px;
     padding-left: 100px;
-    
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
 }
@@ -46,15 +82,11 @@ body{
     font-weight: 500 ;
     display: block;
 }
-#about_me{
-    line-height: 1.5;
-}
 #main_text{
     
     text-align: justify;
     font-size: 20;
     font-weight: 500 ;
-    font-family: 'Cascadia Code', sans-serif;
     display: block;
     margin-left: 50;
     margin-right: auto;
@@ -67,7 +99,7 @@ body{
     
     font-family: 'Cascadia Code', sans-serif;
     display: block;
-    width: 70%;
+    width: 80%;
     color: rgb(182, 0, 0);
 }
 hr {
