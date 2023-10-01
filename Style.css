@@ -2,7 +2,10 @@ body, h1, h2, h3, h4, h5, h6 {
     font-family: 'Courier New', Courier, monospace;
     text-align: justify;
   }
-
+#skills_sub{
+    display: flex;
+    justify-content: space-evenly;
+}
 #programming_languages{
     margin-top: 25;
     margin-left: 80;
