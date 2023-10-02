@@ -4,7 +4,8 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 #gitlogo{
-    margin-right: 30px;
+    margin-top:5;
+    margin-right: 40px;
 }
 
 #leetcode{
@@ -17,8 +18,18 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 #linkedin{
-    margin-top: -7;
+    margin-top: -3;
     margin-right: 30px;
+}
+
+
+#info2{
+    margin-top: 85;
+    margin-left: -193;
+    display: flex;
+    justify-content: space-evenly;
+    justify-content:  center 
+    
 }
 
 #info{
@@ -26,15 +37,24 @@ body, h1, h2, h3, h4, h5, h6 {
     margin-right: 30px;
     display: flex;
     justify-content: space-evenly; 
+    justify-content:  center ;
 }
 
+#nidsgit:hover {
+    transform: scale(2);
+}
+
+
+#info2 div,
 #info div,
 #skills_sub div{
     transition: transform 0.2s ease-in-out;
 }
 
+#info2 div:hover,
 #info div:hover,
 #skills_sub div:hover {
+
     transform: scale(1.2); 
 }
 
