@@ -1,68 +1,75 @@
 body, h1, h2, h3, h4, h5, h6 {
     font-family: 'Courier New', Courier, monospace;
     text-align: justify;
-  }
+}
 
 #gitlogo{
-
     margin-right: 30px;
-
-
 }
+
 #leetcode{
-
     margin-right: 30px;
-
-
 }
+
 #hackerrank{
     margin-top: -17;
-
     margin-right: 30px;
-
-
 }
+
 #linkedin{
     margin-top: -7;
     margin-right: 30px;
 }
+
 #info{
     margin-top: 15px;
     margin-right: 30px;
     display: flex;
-    justify-content: space-evenly;
-    
+    justify-content: space-evenly; 
+}
+
+#info div,
+#skills_sub div{
+    transition: transform 0.2s ease-in-out;
+}
+
+#info div:hover,
+#skills_sub div:hover {
+    transform: scale(1.2); 
 }
 
 #Header{
     display: flex;
     justify-content: space-evenly;
 }
+
 #skills_sub{
     margin-left: -70;
     display: flex;
     justify-content: space-evenly;
 }
+
 #programming_languages{
     margin-top: 25;
     margin-left: 80;
     font-size: h3;
     display: block;
 }
+
 #FrameWorks{
     margin-top: 25;
     margin-left: 40;
     font-size: h3;
     display: block;
 }
-#misc{
 
+#misc{
     margin-top: 25;
     margin-left: 80;
     font-size: h3;
     display: block;
-    
 }
+
 a:link{
     color:white;
     text-decoration: none;
