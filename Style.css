@@ -40,17 +40,15 @@ body, h1, h2, h3, h4, h5, h6 {
     justify-content:  center ;
 }
 
-#nidsgit:hover {
-    transform: scale(2);
-}
 
-
+#nidsgit img,
 #info2 div,
 #info div,
 #skills_sub div{
     transition: transform 0.2s ease-in-out;
 }
 
+#nidsgit img:hover,
 #info2 div:hover,
 #info div:hover,
 #skills_sub div:hover {
