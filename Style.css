@@ -172,3 +172,14 @@ hr {
       width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
     }
   }
+  @media only screen and (min-device-width : 768px) and (orientation: landscape) {
+    body {
+      flex-direction: row;
+    }
+  }
+  
+  @media only screen and (min-device-width : 768px) and (orientation: portrait) {
+    body {
+      flex-direction: column;
+    }
+  }
