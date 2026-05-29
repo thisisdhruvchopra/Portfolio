@@ -1,0 +1,384 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg:        #ffffff;
+    --primary:   #1d1d1f;
+    --secondary: #6e6e73;
+    --tertiary:  #86868b;
+    --accent:    #4a9b8e;
+    --font:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --width:     960px;
+    --pad:       2.5rem;
+    --nav-h:     52px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--primary);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.7;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+
+/* ─── NAV ─────────────────────────────────────── */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: var(--nav-h);
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 max(var(--pad), calc((100% - var(--width)) / 2 + var(--pad)));
+}
+
+.nav-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+}
+.nav-name:hover { text-decoration: none; }
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.25rem;
+}
+.nav-links a {
+    font-size: 0.8rem;
+    color: var(--secondary);
+    letter-spacing: 0.01em;
+}
+.nav-links a:hover { color: var(--primary); text-decoration: none; }
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--secondary);
+    font-family: var(--font);
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+
+/* ─── MAIN ────────────────────────────────────── */
+
+main {
+    max-width: var(--width);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+}
+
+section { padding: 4.5rem 0; }
+
+
+/* ─── HERO ────────────────────────────────────── */
+
+#hero {
+    padding-top: 6rem;
+    padding-bottom: 5.5rem;
+}
+
+#hero h1 {
+    font-size: clamp(3rem, 7vw, 5.25rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+    color: var(--primary);
+    margin-bottom: 2.75rem;
+}
+
+.hero-sub {
+    display: grid;
+    grid-template-columns: 1fr 230px;
+    column-gap: 4.5rem;
+    align-items: start;
+}
+
+.tagline {
+    font-size: clamp(1.2rem, 2vw, 1.45rem);
+    font-weight: 400;
+    color: var(--primary);
+    letter-spacing: -0.015em;
+    line-height: 1.45;
+}
+
+.hero-meta { padding-top: 0.1rem; }
+
+.role {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;           /* increased from 0.76rem */
+    color: var(--primary);
+    letter-spacing: 0.01em;
+    line-height: 1.65;
+    margin-bottom: 0.6rem;
+}
+
+.location {
+    font-size: 0.78rem;
+    color: var(--tertiary);
+    margin-bottom: 1.4rem;
+    letter-spacing: 0.01em;
+}
+
+.hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.82rem;
+}
+.hero-links a,
+.hero-links .dot { color: var(--secondary); }
+.hero-links a:hover { color: var(--primary); text-decoration: none; }
+
+
+/* ─── SECTION ROWS ────────────────────────────── */
+
+.row {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    column-gap: 4.5rem;
+    align-items: start;
+}
+
+h2 {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--secondary);
+    position: sticky;
+    top: calc(var(--nav-h) + 2rem);
+}
+
+
+/* ─── ABOUT ───────────────────────────────────── */
+
+.lead {
+    font-size: 1.1rem;
+    color: var(--primary);
+    line-height: 1.72;
+    letter-spacing: -0.008em;
+    margin-bottom: 1.5rem;
+}
+
+#about .col p:not(.lead) {
+    font-size: 0.95rem;
+    color: var(--secondary);
+    line-height: 1.78;
+}
+#about .col p + p { margin-top: 1.1rem; }
+
+
+/* ─── RESEARCH INTERESTS ──────────────────────── */
+
+ul.interests {
+    list-style: none;
+    padding: 0;
+}
+ul.interests li {
+    position: relative;
+    padding-left: 1.1rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--secondary);
+    line-height: 1.65;
+}
+ul.interests li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--tertiary);
+    font-size: 0.8rem;
+    top: 0.15em;
+}
+
+
+/* ─── ENTRIES (work + projects) ───────────────── */
+
+.entry + .entry {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.entry-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+    margin-bottom: 0.3rem;
+}
+
+.entry-date {
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    color: var(--tertiary);
+    letter-spacing: 0.02em;
+    margin-bottom: 1.2rem;
+}
+
+.entry-status {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.85rem;
+}
+
+.entry ul {
+    list-style: none;
+    padding: 0;
+}
+.entry ul li {
+    position: relative;
+    padding-left: 1.1rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.91rem;
+    color: var(--secondary);
+    line-height: 1.7;
+}
+.entry ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--tertiary);
+}
+
+#projects .entry p:not(.entry-title):not(.entry-status) {
+    font-size: 0.91rem;
+    color: var(--secondary);
+    line-height: 1.72;
+    margin-top: 0.5rem;
+}
+
+
+/* ─── CV ──────────────────────────────────────── */
+
+#cv .col p {
+    font-size: 0.91rem;
+    color: var(--secondary);
+    margin-bottom: 1.25rem;
+}
+
+.cv-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.93rem;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+}
+.cv-link:hover { color: var(--accent); text-decoration: none; }
+
+.cv-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--tertiary);
+    letter-spacing: 0.08em;
+    border: 1px solid rgba(0,0,0,0.15);
+    padding: 0.15em 0.45em;
+    border-radius: 3px;
+    font-weight: 400;
+}
+
+
+/* ─── CONTACT ─────────────────────────────────── */
+
+#contact .col p { font-size: 0.95rem; color: var(--secondary); }
+#contact .col p + p { margin-top: 0.65rem; }
+
+#contact a[href^="mailto"] {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: -0.015em;
+}
+#contact a[href^="mailto"]:hover { color: var(--accent); text-decoration: none; }
+
+.contact-links {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 2rem;
+    font-size: 0.82rem;
+}
+.contact-links a,
+.contact-links .dot { color: var(--secondary); }
+.contact-links a:hover { color: var(--primary); text-decoration: none; }
+
+
+/* ─── SHARED ──────────────────────────────────── */
+
+.dot { opacity: 0.35; }
+
+
+/* ─── RESPONSIVE ──────────────────────────────── */
+
+@media (max-width: 700px) {
+    nav { padding: 0 1.5rem; }
+
+    .nav-toggle { display: block; }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: rgba(255,255,255,0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        gap: 0;
+        border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li a {
+        display: block;
+        padding: 0.85rem 1.5rem;
+        font-size: 0.9rem;
+        border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    main { padding: 0 1.5rem; }
+    section { padding: 3rem 0; }
+    #hero { padding-top: 3.5rem; padding-bottom: 3rem; }
+
+    .hero-sub {
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+    }
+
+    .row { grid-template-columns: 1fr; }
+    h2 { position: static; margin-bottom: 1.75rem; }
+
+    ul.news-list li {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+}

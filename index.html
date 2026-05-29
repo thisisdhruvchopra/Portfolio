@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dhruv Chopra, cybersecurity researcher at C3iHub, IIT Kanpur. Working on deception technology, honeypots, and attacker behavior analysis.">
+    <title>Dhruv Chopra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="nav-name">Dhruv Chopra</a>
+        <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#contact">Contact</a></li>
+
+        </ul>
+    </nav>
+
+    <main>
+
+        <!-- ── HERO ── -->
+        <section id="hero">
+            <h1>Dhruv Chopra</h1>
+            <div class="hero-sub">
+                <p class="tagline">I build traps for attackers<br>and study what they do inside them.</p>
+                <div class="hero-meta">
+                    <p class="role">Associate – Deception Technology<br>C3iHub, IIT Kanpur</p>
+                    <p class="location">Kanpur, India</p>
+                    <p class="hero-links">
+                        <a href="https://github.com/thisisdhruvchopra" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <span class="dot">&middot;</span>
+                        <a href="https://linkedin.com/in/dhruvchopra92" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <span class="dot">&middot;</span>
+                        <a href="mailto:dhruvc@iitk.ac.in">Email</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── ABOUT ── -->
+        <section id="about">
+            <div class="row">
+                <h2>About</h2>
+                <div class="col">
+                    <p class="lead">I study the question of how long you can keep a sophisticated attacker inside a deception environment before they recognize it as artificial. I work at C3iHub, IIT Kanpur, where I design, deploy, and operate live honeypot infrastructure against real attacker traffic, including industrial and ICS endpoints.</p>
+                    <p>The problem that drives most of my thinking is credibility over time. Generic honeypots get identified within hours. But a high-fidelity environment that mirrors production infrastructure, with real services, real behavioral signatures, and induced vulnerabilities that match what an attacker expects, buys significantly more dwell time. I want to understand exactly what breaks that illusion, and how to build environments that survive active reconnaissance by sophisticated actors.</p>
+                    <p>I'm currently applying to MS/PhD programs in Europe, primarily Germany, to work on this more rigorously. I'm interested in groups working on intrusion deception, adversarial simulation, or threat-informed defense.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── RESEARCH INTERESTS ── -->
+        <section id="research">
+            <div class="row">
+                <h2>Research</h2>
+                <div class="col">
+                    <ul class="interests">
+                        <li>Honeypot detectability and environment longevity under active attacker reconnaissance</li>
+                        <li>High-fidelity deception for IT/OT and industrial control systems</li>
+                        <li>Attacker TTP profiling from live honeypot telemetry</li>
+                        <li>APT behavioral patterns and adversarial simulation frameworks</li>
+                        <li>Counter-honeypot techniques and detection evasion by advanced actors</li>
+                        <li>Threat intelligence pipelines for operational deception environments</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── WORK ── -->
+        <section id="work">
+            <div class="row">
+                <h2>Work</h2>
+                <div class="col">
+
+                    <div class="entry">
+                        <p class="entry-title">Associate – Deception Technology, C3iHub IIT Kanpur</p>
+                        <p class="entry-date">Jul 2025–Present</p>
+                        <ul>
+                            <li>Engineered a high-fidelity HTTP honeypot mirroring SAIL BSP's production web infrastructure; induced targeted CVEs, deployed Cowrie &amp; Dionaea across SSH/FTP/ICS endpoints; ~3&times; increase in attacker dwell time vs. generic deployments.</li>
+                            <li>Orchestrated IT/OT honeypot infrastructure on Kubernetes: multi-node clusters, HPA, namespace isolation; 99.9% uptime across 6 concurrent deception endpoints.</li>
+                            <li>Analyzed live attacker TTPs via HTTP fingerprinting and payload inspection; produced weekly threat intelligence reports.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <p class="entry-title">Research Intern, C3iHub IIT Kanpur</p>
+                        <p class="entry-date">May–Jul 2025</p>
+                        <ul>
+                            <li>Transitioned from DevOps into security research; embedded within active honeypot deployments for live industrial client engagements.</li>
+                            <li>Studied networking fundamentals, OWASP, and MITRE ATT&amp;CK in the context of real adversarial traffic, not classroom exercises.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ── PROJECTS ── -->
+        <section id="projects">
+            <div class="row">
+                <h2>Projects</h2>
+                <div class="col">
+
+                    <div class="entry">
+                        <p class="entry-title">ADAPT Honeynet Replication</p>
+                        <p class="entry-status">In progress, writing up</p>
+                        <p>Physical-hardware replication of the ADAPT framework (Putrevu et al., ACM 2024) at C3iHub. Covered all three APT attack paths and the full Kafka/Elasticsearch threat intelligence pipeline. The evaluation surfaced something worth documenting: the CVE assumptions underpinning ADAPT have aged noticeably against current APT tradecraft. Writing this up as a technical critique.</p>
+                    </div>
+
+                    <div class="entry">
+                        <p class="entry-title">Honeypot Log Analyser</p>
+                        <p>Python tool for parsing Cowrie and Dionaea logs at scale; extracts attacker TTPs and surfaces botnet activity patterns from live honeypot sessions. Built to handle the volume coming off C3iHub's active deployments. <a href="https://github.com/thisisdhruvchopra" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+                    </div>
+
+                    <div class="entry">
+                        <p class="entry-title">Kubernetes IT/OT Sensor Cluster</p>
+                        <p>Multi-node Kubernetes cluster managing 6 concurrent deception endpoints for industrial client deployments. Namespace isolation, HPA, 99.9% uptime. Designed around the constraint that honeypot infrastructure must be operationally invisible to the client's production network.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CV ── -->
+        <section id="cv">
+            <div class="row">
+                <h2>CV</h2>
+                <div class="col">
+                    <p>Full curriculum vitae including work history, projects, and references.</p>
+                    <a href="resume.pdf" class="cv-link" target="_blank" rel="noopener noreferrer">
+                        Curriculum Vitae
+                        <span class="cv-tag">PDF</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CONTACT ── -->
+        <section id="contact">
+            <div class="row">
+                <h2>Contact</h2>
+                <div class="col">
+                    <p><a href="mailto:dhruvc@iitk.ac.in">dhruvc@iitk.ac.in</a></p>
+                    <p><a href="mailto:thisisdhruvchopra@gmail.com">thisisdhruvchopra@gmail.com</a></p>
+                    <p>Open to research conversations: deception technology, intrusion detection, MS/PhD advising, or collaborations in this space.</p>
+                    <p class="contact-links">
+                        <a href="https://github.com/thisisdhruvchopra" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <span class="dot">&middot;</span>
+                        <a href="https://linkedin.com/in/dhruvchopra92" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const toggle = document.querySelector('.nav-toggle');
+        const links  = document.querySelector('.nav-links');
+        toggle.addEventListener('click', () => links.classList.toggle('open'));
+    </script>
+
+</body>
+</html>
