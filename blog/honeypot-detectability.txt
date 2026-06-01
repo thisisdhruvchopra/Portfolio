@@ -1,0 +1,31 @@
+title: How Long Before an Attacker Knows They're in a Trap?
+date:  2026-06-01
+desc:  The signals that break honeypot illusions — and what high-fidelity environments do differently to survive active reconnaissance.
+
+The standard answer in honeypot research is: not long. Generic honeypots get identified within hours, sometimes minutes. But that framing obscures the more interesting question — what specifically breaks the illusion, and can you fix it?
+
+I've been running live honeypots at C3iHub against real attacker traffic for the past year. What I've found is that detectability isn't a binary property. It's a gradient, and where you sit on that gradient is determined by a surprisingly small set of signals. Get those signals right and dwell time increases measurably. Miss one and sophisticated actors walk out.
+
+# The signals that give you away
+
+Most detection happens through one of three channels: network fingerprinting, service behavior analysis, or environmental inconsistency. The first two are well-documented. The third is where most deployments fail quietly.
+
+Network fingerprinting is the easiest to address. Tools like `p0f` and `nmap` OS detection work by comparing TCP/IP stack behavior against known signatures. A Cowrie instance running on Ubuntu with default kernel parameters will fingerprint as Ubuntu. If you've told an attacker they're hitting a Windows Server 2019 box, that's an immediate tell. Fixing this means either running your honeypot on hardware that matches the claimed identity, or modifying kernel parameters to match the target's fingerprint — both doable, neither trivial at scale.
+
+Service behavior is harder. Cowrie emulates an SSH server, but the emulation has limits. The filesystem isn't persistent across sessions by default. Commands like `ps aux` return the same process list every time. An attacker running the same recon command twice and getting identical output knows they're in a scripted environment. The fix is state — maintaining consistent session state across interactions. This is where most open-source honeypots stop short, because it's expensive to implement correctly.
+
+# Environmental inconsistency: the silent killer
+
+The third channel is the one that isn't talked about enough. Environmental inconsistency means the honeypot doesn't match what an attacker expects to find in the environment they think they've compromised.
+
+If your honeypot is supposed to be a web server at a steel plant, it should look like a web server at a steel plant. That means the right filesystem layout, the right running services, the right configuration artifacts, the right network neighbors. An attacker doing lateral movement who finds that the "web server" has no web server logs, no application configuration files, and no connections to any other internal hosts will notice. Not because they ran a specific detection script, but because the environment doesn't feel inhabited.
+
+This is what I mean by credibility over time. A honeypot can survive initial exploitation. It's the sustained interaction — the attacker living inside it for hours or days, building a mental model of the environment — that exposes inconsistency. The question is whether you've built enough environmental fidelity to hold up under that kind of scrutiny.
+
+# What high-fidelity actually means in practice
+
+For the SAIL BSP deployment, we mirrored the production web infrastructure: real application logs with synthetic but plausible entries, matching service versions, network topology that reflected the actual plant layout. We induced the CVEs we wanted attackers to find — not random vulnerabilities, but the ones that matched the profile of what a threat actor targeting that sector would look for.
+
+The result was roughly 3× the dwell time compared to our generic Cowrie/Dionaea baselines. More importantly, the attacker behavior we captured was qualitatively different — less automated, more manual recon, more lateral movement attempts. That's the data you actually want. A honeypot that gets identified in an hour gives you botnet traffic. One that survives gives you APT tradecraft.
+
+None of this is a solved problem. The arms race between honeypot fidelity and counter-honeypot detection is ongoing. But the gap between a generic deployment and a well-crafted one is large enough that it's worth closing, and the signals that matter most are knowable.

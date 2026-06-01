@@ -3,92 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The signals that break honeypot illusions — and what high-fidelity environments do differently.">
+    <meta name="description" content="The signals that break honeypot illusions — and what high-fidelity environments do differently to survive active reconnaissance.">
     <title>How Long Before an Attacker Knows They're in a Trap? — Dhruv Chopra</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <style>
-        main { max-width: 680px; }
-
-        .post-header {
-            padding: 5rem 0 3rem;
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-            margin-bottom: 3rem;
-        }
-
-        .post-kicker {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-            color: var(--secondary);
-            margin-bottom: 1.25rem;
-        }
-
-        .post-header h1 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 600;
-            letter-spacing: -0.03em;
-            line-height: 1.15;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .post-byline {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--tertiary);
-            letter-spacing: 0.02em;
-        }
-
-        .post-body { padding-bottom: 6rem; }
-
-        .post-body p {
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-            color: var(--secondary);
-            line-height: 1.78;
-        }
-
-        .post-body .lead {
-            font-size: 1.08rem;
-            color: var(--primary);
-            line-height: 1.72;
-            letter-spacing: -0.008em;
-            margin-bottom: 2rem;
-        }
-
-        .post-body h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--primary);
-            letter-spacing: -0.01em;
-            margin: 2.75rem 0 0.75rem;
-        }
-
-        .post-body code {
-            font-family: var(--font-mono);
-            font-size: 0.82em;
-            background: rgba(0,0,0,0.04);
-            padding: 0.1em 0.38em;
-            border-radius: 3px;
-            color: var(--primary);
-        }
-
-        .post-back {
-            margin-top: 4rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(0,0,0,0.08);
-            font-size: 0.85rem;
-            color: var(--secondary);
-        }
-
-        @media (max-width: 700px) {
-            .post-header { padding: 3rem 0 2rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="post.css">
 </head>
 <body>
 
@@ -97,10 +18,10 @@
         <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
         <ul class="nav-links">
             <li><a href="../#about">About</a></li>
+            <li><a href="../#blog">Blog</a></li>
             <li><a href="../#research">Research</a></li>
             <li><a href="../#work">Work</a></li>
             <li><a href="../#projects">Projects</a></li>
-            <li><a href="../#blog">Blog</a></li>
             <li><a href="../#cv">CV</a></li>
             <li><a href="../#contact">Contact</a></li>
         </ul>
@@ -109,41 +30,26 @@
     <main>
         <article>
             <header class="post-header">
-                <p class="post-kicker">Writing</p>
+                <p class="post-kicker">Blog</p>
                 <h1>How Long Before an Attacker Knows They're in a Trap?</h1>
                 <p class="post-byline">Dhruv Chopra &middot; <time datetime="2026-06-01">Jun 2026</time></p>
             </header>
-
             <div class="post-body">
                 <p class="lead">The standard answer in honeypot research is: not long. Generic honeypots get identified within hours, sometimes minutes. But that framing obscures the more interesting question — what specifically breaks the illusion, and can you fix it?</p>
-
                 <p>I've been running live honeypots at C3iHub against real attacker traffic for the past year. What I've found is that detectability isn't a binary property. It's a gradient, and where you sit on that gradient is determined by a surprisingly small set of signals. Get those signals right and dwell time increases measurably. Miss one and sophisticated actors walk out.</p>
-
                 <h3>The signals that give you away</h3>
-
                 <p>Most detection happens through one of three channels: network fingerprinting, service behavior analysis, or environmental inconsistency. The first two are well-documented. The third is where most deployments fail quietly.</p>
-
                 <p>Network fingerprinting is the easiest to address. Tools like <code>p0f</code> and <code>nmap</code> OS detection work by comparing TCP/IP stack behavior against known signatures. A Cowrie instance running on Ubuntu with default kernel parameters will fingerprint as Ubuntu. If you've told an attacker they're hitting a Windows Server 2019 box, that's an immediate tell. Fixing this means either running your honeypot on hardware that matches the claimed identity, or modifying kernel parameters to match the target's fingerprint — both doable, neither trivial at scale.</p>
-
                 <p>Service behavior is harder. Cowrie emulates an SSH server, but the emulation has limits. The filesystem isn't persistent across sessions by default. Commands like <code>ps aux</code> return the same process list every time. An attacker running the same recon command twice and getting identical output knows they're in a scripted environment. The fix is state — maintaining consistent session state across interactions. This is where most open-source honeypots stop short, because it's expensive to implement correctly.</p>
-
                 <h3>Environmental inconsistency: the silent killer</h3>
-
                 <p>The third channel is the one that isn't talked about enough. Environmental inconsistency means the honeypot doesn't match what an attacker expects to find in the environment they think they've compromised.</p>
-
                 <p>If your honeypot is supposed to be a web server at a steel plant, it should look like a web server at a steel plant. That means the right filesystem layout, the right running services, the right configuration artifacts, the right network neighbors. An attacker doing lateral movement who finds that the "web server" has no web server logs, no application configuration files, and no connections to any other internal hosts will notice. Not because they ran a specific detection script, but because the environment doesn't feel inhabited.</p>
-
                 <p>This is what I mean by credibility over time. A honeypot can survive initial exploitation. It's the sustained interaction — the attacker living inside it for hours or days, building a mental model of the environment — that exposes inconsistency. The question is whether you've built enough environmental fidelity to hold up under that kind of scrutiny.</p>
-
                 <h3>What high-fidelity actually means in practice</h3>
-
                 <p>For the SAIL BSP deployment, we mirrored the production web infrastructure: real application logs with synthetic but plausible entries, matching service versions, network topology that reflected the actual plant layout. We induced the CVEs we wanted attackers to find — not random vulnerabilities, but the ones that matched the profile of what a threat actor targeting that sector would look for.</p>
-
                 <p>The result was roughly 3× the dwell time compared to our generic Cowrie/Dionaea baselines. More importantly, the attacker behavior we captured was qualitatively different — less automated, more manual recon, more lateral movement attempts. That's the data you actually want. A honeypot that gets identified in an hour gives you botnet traffic. One that survives gives you APT tradecraft.</p>
-
                 <p>None of this is a solved problem. The arms race between honeypot fidelity and counter-honeypot detection is ongoing. But the gap between a generic deployment and a well-crafted one is large enough that it's worth closing, and the signals that matter most are knowable.</p>
-
-                <p class="post-back"><a href="../#writing">&larr; All writing</a></p>
+                <p class="post-back"><a href="../#blog">&larr; Blog</a></p>
             </div>
         </article>
     </main>

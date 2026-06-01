@@ -1,0 +1,78 @@
+main { max-width: 680px; }
+
+.post-header {
+    padding: 5rem 0 3rem;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    margin-bottom: 3rem;
+}
+
+.post-kicker {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--secondary);
+    margin-bottom: 1.25rem;
+}
+
+.post-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.post-byline {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--tertiary);
+    letter-spacing: 0.02em;
+}
+
+.post-body { padding-bottom: 6rem; }
+
+.post-body p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: var(--secondary);
+    line-height: 1.78;
+}
+
+.post-body .lead {
+    font-size: 1.08rem;
+    color: var(--primary);
+    line-height: 1.72;
+    letter-spacing: -0.008em;
+    margin-bottom: 2rem;
+}
+
+.post-body h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+    margin: 2.75rem 0 0.75rem;
+}
+
+.post-body code {
+    font-family: var(--font-mono);
+    font-size: 0.82em;
+    background: rgba(0,0,0,0.04);
+    padding: 0.1em 0.38em;
+    border-radius: 3px;
+    color: var(--primary);
+}
+
+.post-back {
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    font-size: 0.85rem;
+    color: var(--secondary);
+}
+
+@media (max-width: 700px) {
+    .post-header { padding: 3rem 0 2rem; }
+}
