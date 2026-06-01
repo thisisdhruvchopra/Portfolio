@@ -278,6 +278,70 @@ ul.interests li::before {
 }
 
 
+/* ─── BLOG ────────────────────────────────────── */
+
+.post + .post {
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.post-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.post-date {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--tertiary);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.post-title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+}
+.post-title a { color: var(--primary); }
+.post-title a:hover { color: var(--accent); text-decoration: none; }
+
+.post-featured .post-title {
+    font-size: 1.4rem;
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+}
+
+.post-desc {
+    font-size: 0.91rem;
+    color: var(--secondary);
+    line-height: 1.68;
+    margin-bottom: 1rem;
+}
+
+.post-featured .post-desc {
+    font-size: 0.95rem;
+    margin-bottom: 1.1rem;
+}
+
+.post-read {
+    display: inline-block;
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+}
+.post-read:hover { text-decoration: none; opacity: 0.75; }
+
+
 /* ─── CV ──────────────────────────────────────── */
 
 #cv .col p {
