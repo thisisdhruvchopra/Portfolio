@@ -63,7 +63,17 @@
         <section id="blog">
             <div class="row">
                 <h2>Blog</h2>
-                <div class="col" id="blog-list"></div>
+                <div class="col">
+
+                    <div class="post post-featured">
+                        <p class="post-label">Latest</p>
+                        <p class="post-date">Jun 2026</p>
+                        <p class="post-title"><a href="blog/honeypot-detectability.html">How Long Before an Attacker Knows They're in a Trap?</a></p>
+                        <p class="post-desc">The signals that break honeypot illusions — and what high-fidelity environments do differently to survive active reconnaissance.</p>
+                        <a href="blog/honeypot-detectability.html" class="post-read">Read →</a>
+                    </div>
+
+                </div>
             </div>
         </section>
 
@@ -176,22 +186,6 @@
         const toggle = document.querySelector('.nav-toggle');
         const links  = document.querySelector('.nav-links');
         toggle.addEventListener('click', () => links.classList.toggle('open'));
-
-        fetch('blog/posts.json')
-            .then(r => r.json())
-            .then(posts => {
-                const list = document.getElementById('blog-list');
-                list.innerHTML = posts.map((p, i) => `
-                    <div class="post${i === 0 ? ' post-featured' : ''}">
-                        ${i === 0 ? '<p class="post-label">Latest</p>' : ''}
-                        <p class="post-date">${p.date_display}</p>
-                        <p class="post-title"><a href="${p.url}">${p.title}</a></p>
-                        <p class="post-desc">${p.desc}</p>
-                        ${i === 0 ? `<a href="${p.url}" class="post-read">Read →</a>` : ''}
-                    </div>
-                `).join('');
-            })
-            .catch(() => {});
     </script>
 
 </body>
