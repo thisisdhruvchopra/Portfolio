@@ -21,6 +21,7 @@
             <li><a href="#research">Research</a></li>
             <li><a href="#work">Work</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
             <li><a href="#cv">CV</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -54,6 +55,7 @@
                 <div class="col">
                     <p class="lead">I study the question of how long you can keep a sophisticated attacker inside a deception environment before they recognize it as artificial. I work at C3iHub, IIT Kanpur, where I design, deploy, and operate live honeypot infrastructure against real attacker traffic, including industrial and ICS endpoints.</p>
                     <p>The problem that drives most of my thinking is credibility over time. Generic honeypots get identified within hours. But a high-fidelity environment that mirrors production infrastructure, with real services, real behavioral signatures, and induced vulnerabilities that match what an attacker expects, buys significantly more dwell time. I want to understand exactly what breaks that illusion, and how to build environments that survive active reconnaissance by sophisticated actors.</p>
+                    <p>I came to this through infrastructure. I started at C3iHub in 2024 as a DevOps intern, moved into security engineering, and then into research. That background is why I treat deception environments as systems to engineer and measure, not one-off deployments. My current work extends the ADAPT deception framework into a deception-as-a-service model, so a honeynet and its threat intelligence pipeline can be provisioned on demand instead of being tied to fixed physical hardware.</p>
                     <p>I'm currently applying to MS/PhD programs in Europe, primarily Germany, to work on this more rigorously. I'm interested in groups working on intrusion deception, adversarial simulation, or threat-informed defense.</p>
                 </div>
             </div>
@@ -82,6 +84,8 @@
                         <li>APT behavioral patterns and adversarial simulation frameworks</li>
                         <li>Counter-honeypot techniques and detection evasion by advanced actors</li>
                         <li>Threat intelligence pipelines for operational deception environments</li>
+                        <li>Deception-as-a-service: on-demand provisioning of honeynets and their telemetry pipelines</li>
+                        <li>Structured threat intelligence sharing and explainable attribution (STIX/TAXII)</li>
                     </ul>
                 </div>
             </div>
@@ -97,18 +101,28 @@
                         <p class="entry-title">Associate – Deception Technology, C3iHub IIT Kanpur</p>
                         <p class="entry-date">Jul 2025–Present</p>
                         <ul>
-                            <li>Engineered a high-fidelity HTTP honeypot mirroring SAIL BSP's production web infrastructure; induced targeted CVEs, deployed Cowrie &amp; Dionaea across SSH/FTP/ICS endpoints; ~3&times; increase in attacker dwell time vs. generic deployments.</li>
-                            <li>Orchestrated IT/OT honeypot infrastructure on Kubernetes: multi-node clusters, HPA, namespace isolation; 99.9% uptime across 6 concurrent deception endpoints.</li>
-                            <li>Analyzed live attacker TTPs via HTTP fingerprinting and payload inspection; produced weekly threat intelligence reports.</li>
+                            <li>Built a high-fidelity HTTP honeypot mirroring SAIL BSP's production web surface with induced CVEs and custom vulnerability layering. It draws real-world botnet and APT-class traffic and holds attackers ~3&times; longer than standard low-interaction deployments.</li>
+                            <li>Deployed Cowrie and Dionaea across SSH, FTP, and ICS endpoints and orchestrated the full IT/OT honeypot stack on Kubernetes; 99.9% sensor uptime across 6 concurrent deception endpoints.</li>
+                            <li>Analyzed attacker TTPs through payload inspection, HTTP fingerprinting, and credential capture; weekly threat intelligence reports tracking 3+ active botnet campaigns against critical industrial infrastructure.</li>
+                            <li>Ongoing research: extending the ADAPT deception framework into a deception-as-a-service model.</li>
                         </ul>
                     </div>
 
                     <div class="entry">
-                        <p class="entry-title">Research Intern, C3iHub IIT Kanpur</p>
+                        <p class="entry-title">Research Intern – Deception Technology, C3iHub IIT Kanpur</p>
                         <p class="entry-date">May–Jul 2025</p>
                         <ul>
-                            <li>Transitioned from DevOps into security research; embedded within active honeypot deployments for live industrial client engagements.</li>
-                            <li>Studied networking fundamentals, OWASP, and MITRE ATT&amp;CK in the context of real adversarial traffic, not classroom exercises.</li>
+                            <li>Audited CI/CD pipelines and container configurations on live client infrastructure against OWASP Top 10 and CIS benchmarks, cutting identified attack surface by ~30%.</li>
+                            <li>Applied MITRE ATT&amp;CK TTP mapping and network design (CIDR, subnetting, VPC) to honeypot sensor placement and network segmentation.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <p class="entry-title">DevOps Intern, C3iHub IIT Kanpur</p>
+                        <p class="entry-date">Feb–Jun 2024</p>
+                        <ul>
+                            <li>Deployed containerised microservices on Docker and Kubernetes with 99.8% uptime; provisioned AWS infrastructure with Terraform and Jenkins, cutting deployment time by 40% and manual effort by 60%.</li>
+                            <li>Set up ELK Stack monitoring and alerting across Kubernetes clusters, improving incident detection time by 35%.</li>
                         </ul>
                     </div>
 
@@ -123,19 +137,42 @@
                 <div class="col">
 
                     <div class="entry">
-                        <p class="entry-title">ADAPT Honeynet Replication</p>
-                        <p class="entry-status">In progress, writing up</p>
-                        <p>Physical-hardware replication of the ADAPT framework (Putrevu et al., ACM 2024) at C3iHub. Covered all three APT attack paths and the full Kafka/Elasticsearch threat intelligence pipeline. The evaluation surfaced something worth documenting: the CVE assumptions underpinning ADAPT have aged noticeably against current APT tradecraft. Writing this up as a technical critique.</p>
+                        <p class="entry-title">ADAPT Framework Replication</p>
+                        <p class="entry-status">2026 · Technical review submitted for publication</p>
+                        <p>Physical-hardware replication of ADAPT, an adaptive camouflage-based deception framework for trapping APTs (Putrevu et al., ACM 2024). A 6-VM network across two privilege tiers with HTTP/FTP servers and an OpenVPN backbone, covering all three APT attack paths (APT-40, APT-28, Lazarus/APT-38) with MITRE TTP-aligned honey credentials and induced vulnerabilities. I built Chatterbox, a covert app that exfiltrates logs from all 6 VMs to a Kafka broker over an encrypted channel, and wired the Kafka → Elasticsearch → dashboard pipeline for near real-time attack path correlation.</p>
+                        <p>Evaluating it afterwards showed that the framework's core CVEs (CVE-2021-41773, CVE-2022-0847) are fully patched and no longer representative of real APT tradecraft. I documented this in an independent technical review, now submitted for publication.</p>
+                    </div>
+
+                    <div class="entry">
+                        <p class="entry-title">CyberCMS: Cyber Crime Investigation &amp; Intelligence Sharing</p>
+                        <p class="entry-status">2026 · Team of 4</p>
+                        <p>A working law-enforcement platform. I led the threat intelligence layer, modelling KYC fraud, phishing, and malware activity as a STIX object graph shared over TAXII to correlate indicators from 3 agencies to a single threat actor, with an explainability layer that justifies every attribution. I also co-developed case management from FIR intake to court outcome (automated extraction and enrichment across 9 identifier types, including phone, UPI, bank account, IP, domain, and crypto wallet) and evidence integrity controls (SHA-256 hashing, chain-of-custody logging, statutory deadline flagging).</p>
                     </div>
 
                     <div class="entry">
                         <p class="entry-title">Honeypot Log Analyser</p>
-                        <p>Python tool for parsing Cowrie and Dionaea logs at scale; extracts attacker TTPs and surfaces botnet activity patterns from live honeypot sessions. Built to handle the volume coming off C3iHub's active deployments. <a href="https://github.com/thisisdhruvchopra" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+                        <p class="entry-status">2025</p>
+                        <p>Python toolkit for HTTP honeypot log analysis. A priority-ordered regex classification engine sorts attack events (command injection, path traversal, CMS scanning) into severity tiers across 10,000+ log entries per weekly cycle. MaxMind GeoLite2 geolocation and credential extraction from HTTP POST payloads cut manual threat analysis time by ~50%. <a href="https://github.com/thisisdhruvchopra" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ── EDUCATION ── -->
+        <section id="education">
+            <div class="row">
+                <h2>Education</h2>
+                <div class="col">
+
+                    <div class="entry">
+                        <p class="entry-title">B.Tech, Computer Science &amp; Engineering</p>
+                        <p class="entry-date">Dr. A. P. J. Abdul Kalam Technical University, Lucknow · 2025</p>
                     </div>
 
                     <div class="entry">
-                        <p class="entry-title">Kubernetes IT/OT Sensor Cluster</p>
-                        <p>Multi-node Kubernetes cluster managing 6 concurrent deception endpoints for industrial client deployments. Namespace isolation, HPA, 99.9% uptime. Designed around the constraint that honeypot infrastructure must be operationally invisible to the client's production network.</p>
+                        <p class="entry-title">Executive PG Certification, Cloud Computing &amp; DevOps</p>
+                        <p class="entry-date">iHUB DivyaSampark, IIT Roorkee</p>
                     </div>
 
                 </div>
@@ -147,8 +184,8 @@
             <div class="row">
                 <h2>CV</h2>
                 <div class="col">
-                    <p>Full curriculum vitae including work history, projects, and references.</p>
-                    <a href="resume.pdf" class="cv-link" target="_blank" rel="noopener noreferrer">
+                    <p>Full CV: work history, projects, skills, and achievements.</p>
+                    <a href="Dhruv_Chopra_Resume.pdf" class="cv-link" target="_blank" rel="noopener noreferrer">
                         Curriculum Vitae
                         <span class="cv-tag">PDF</span>
                     </a>
